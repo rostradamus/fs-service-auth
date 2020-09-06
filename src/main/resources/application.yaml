@@ -1,6 +1,9 @@
+server:
+  port: 8090
+
 spring:
   application:
-    name: auth
+    name: auth-service
   data:
     mongodb:
       host: localhost
@@ -17,8 +20,16 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
 
-server:
-  port: 8090
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8661/eureka
+    healthcheck:
+      enabled: true
 
 kafka:
   bootstrapAddress: localhost:9092
