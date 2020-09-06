@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: auth
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fs-auth-dev
+      authentication-database: admin
+      username: fitsightadmin
+      password: Admin123Admin123
+      auto-index-creation: true
+  output:
+    ansi:
+      enabled: always
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+server:
+  port: 8090
+
+kafka:
+  bootstrapAddress: localhost:9092
+  topic:
+    user: fs-user-topic
+
+fs:
+  service:
+    jwt:
+      rsa-private-key: |
+        -----BEGIN PRIVATE KEY-----
+        MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAmyhujBh2ZXJHjOG7
+        yBI21Sx8IYaEJFchusC8P8Q4djnii3jwXu35BFQnNRIy1RiuN4/GBrZlPXvOB0Zd
+        JM5gywIDAQABAkB2v5UL59UFg1c7fbBoSXhp4qgGSJtt7LnF4qiw7Q6BfE7P+A9a
+        Bvc2c5V6fNHU/xq1awyCqCnkMjmuOmGqcIPBAiEAyRKIigCHGah3oIsFchb63Dle
+        f0LzmVc83GbMgFkm8NsCIQDFiv36yfWPai3Hr+2OcJgXE4ck8qwaFCOowF/552Ca
+        0QIgKFFMCYfjjxSFsC5QEDllYcUrGo99MvEYJgWC2fWGZmMCIQC+sQ27qnmBl93Z
+        hdqsRcSLgi5TXG8GPaqunAYKF3EKAQIhAKh5YZ/i25WBMaJPMOOQP4aBvC7WJOEV
+        PtH+DX36uYrn
+        -----END PRIVATE KEY-----
+      rsa-public-key: |
+        -----BEGIN PUBLIC KEY-----
+        MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJsobowYdmVyR4zhu8gSNtUsfCGGhCRX
+        IbrAvD/EOHY54ot48F7t+QRUJzUSMtUYrjePxga2ZT17zgdGXSTOYMsCAwEAAQ==
+        -----END PUBLIC KEY-----
+      duration: 900000
+
+logging.level.org.springframework.web.filter:
+  CommonsRequestLoggingFilter: DEBUG
